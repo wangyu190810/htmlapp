@@ -1,3 +1,5 @@
-# htmlapp
+# 个人js组建库
 
-study adobe html app
+
+十分感谢[引用了](http://www.manfredhu.com/) TimeTools.js
+
