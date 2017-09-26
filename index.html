@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="FormTools.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    
+</head>
+    <body>
+        <form method="GET" id="test">
+            <input type="text" name="username" value="" >name
+            <input type="submit" onclick=pop_alert()>
+        </form>
+        <button onclick="FormTools.get_form_obj_data('test')">获取formdata</button>
+
+    </body>
+    <script>
+    function get_account_info(callback=parse_account_info) {
+        $.ajax({
+            url: "http://localhost:5000/accounts/get_account_info",
+            type: "POST",
+            crossDomain: true,
+            data: FormTools.get_form_obj_data('test'),
+            success: function (response) {
+                // var str = JSON.stringify(response);
+                // alert(str);
+                callback(response)
+
+            },
+            error: function (xhr, status) {
+                alert("error");
+            }
+        })
+    }
+    function parse_account_info(response){
+        if (response._errcode != 0){
+                alert(str);
+        }
+        response = response.data;            
+        html = '<table border="1">' 
+       $("#account_info").replaceWith(html)
+    }
+</script>
+</html>
